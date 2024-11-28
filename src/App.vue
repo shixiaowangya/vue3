@@ -18,12 +18,12 @@
         </el-form-item>
         <!-- 密码 -->
         <el-form-item prop="password" label="パスワード" class="mt-[36px]">
-          <el-input v-model.trim="loginFormData.password" placeholder="パスワードを入力してください" type="password" name="password" @keyup.enter="handleLoginSubmit" size="large" show-password class="h-[48px]" />
+          <el-input v-model.trim="loginFormData.password" placeholder="パスワードを入力してください" type="password" name="password" size="large" show-password class="h-[48px]" />
         </el-form-item>
         <!-- 登录按钮 -->
-        <el-button :loading="loading" type="primary" size="large" class="w-full login-btn" @click.prevent="handleLoginSubmit">ログイン</el-button>
+        <el-button :loading="loading" type="primary" size="large" class="w-full login-btn" >ログイン</el-button>
         <!-- 忘记密码 -->
-        <div class="forget-password" @click="handleForgetPassword">パスワードを忘れた場合</div>
+        <div class="forget-password" >パスワードを忘れた場合</div>
       </el-form>
 
       <!--      <h1>{{ count }}</h1>-->
