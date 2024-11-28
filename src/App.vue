@@ -1,9 +1,9 @@
 <!--
  * @Author: wanggaoxian mlabor@163.com
  * @Date: 2024-11-26 19:43:41
- * @LastEditors: wanggaoxian mlabor@163.com
- * @LastEditTime: 2024-11-26 19:48:22
- * @FilePath: src/App.vue
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-11-28 09:47:40
+ * @FilePath: /vue3/src/App.vue
  * @Description: 这是默认设置,可以在设置》工具》File Description中进行配置
  -->
 <template>
@@ -11,6 +11,21 @@
     <div class="">
       <h1>123123123123</h1>
       <el-input v-model="count"></el-input>
+      <el-form ref="loginFormRef" class="login-form" :model="loginFormData" label-position="top">
+        <!-- 邮箱 -->
+        <el-form-item prop="email" label="ユーザーID">
+          <el-input v-model.trim="loginFormData.email" placeholder="ユーザIDを入力してください" size="large" class="h-[48px]" :maxlength="254" />
+        </el-form-item>
+        <!-- 密码 -->
+        <el-form-item prop="password" label="パスワード" class="mt-[36px]">
+          <el-input v-model.trim="loginFormData.password" placeholder="パスワードを入力してください" type="password" name="password" @keyup.enter="handleLoginSubmit" size="large" show-password class="h-[48px]" />
+        </el-form-item>
+        <!-- 登录按钮 -->
+        <el-button :loading="loading" type="primary" size="large" class="w-full login-btn" @click.prevent="handleLoginSubmit">ログイン</el-button>
+        <!-- 忘记密码 -->
+        <div class="forget-password" @click="handleForgetPassword">パスワードを忘れた場合</div>
+      </el-form>
+
       <!--      <h1>{{ count }}</h1>-->
       <!--      <h1>{{ duble }}</h1>-->
       <!--      <button @click="increase">按钮</button>-->
@@ -21,16 +36,17 @@
       <!--      <h1>{{ persom.name }}</h1>-->
     </div>
   </div>
-
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
+import { ElInput } from "element-plus";
 
-import {ref} from "vue";
-import {ElInput} from "element-plus";
-
-
-const count = ref('123123')
+const count = ref("123123");
+const loginFormData = ref({
+  email: "user1@example.com",
+  password: "password1",
+});
 
 // export default {
 //   name: "App",
